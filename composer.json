@@ -1,0 +1,26 @@
+{
+	"name": "maximo-perez-villalba/framework-http-demo",
+	"description": "Aplicación Demo del componente framework-http. Proyecto con fines pedagógicos. ",
+	"type": "library",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Máximo Perez Villalba",
+			"email": "maximo.villalba@gmail.com"
+		}
+	],
+	"version": "0.5.0",
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"demo\\": "src/demo/"
+		}
+	},
+	"autoload-dev": {},
+	"require": {
+		"php": ">=7.4",
+		"maximo-perez-villalba/framework-http": ">1"
+	},
+	"require-dev": {},
+	"prefer-stable": true
+}

@@ -1,0 +1,6 @@
+/.settings/
+/.buildpath
+/.project
+/composer.lock
+/app-config.php
+/errors.log

@@ -1,0 +1,26 @@
+{
+	"name": "maximo-perez-villalba/framework-http",
+	"description": "El componente implementa una simple arquitectura HTTP en PHP con fines pedagógicos.",
+	"type": "library",
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Máximo Perez Villalba",
+			"email": "maximo.villalba@gmail.com"
+		}
+	],
+	"version": "2.0.0",
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"framework\\": "src/framework/"
+		}
+	},
+	"autoload-dev": {},
+	"require": {
+		"php": ">=7.4",
+		"maximo-perez-villalba/framework-environment": ">=1"
+	},
+	"require-dev": {},
+	"prefer-stable": true
+}

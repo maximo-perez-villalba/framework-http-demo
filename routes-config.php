@@ -10,6 +10,8 @@ $routes =
     '/' => demo\controllers\requests\HomeRequest::class,
     '/home' => demo\controllers\requests\HomeRequest::class,
     '/demo' => demo\controllers\requests\DemoRequest::class,
-    '/routes' => demo\controllers\requests\RoutesRequest::class
+    '/routes' => demo\controllers\requests\RoutesRequest::class,
+    '/htaccess' => demo\controllers\requests\FileRequest::class,
+    '/index' => demo\controllers\requests\FileRequest::class
 ]
 ?>

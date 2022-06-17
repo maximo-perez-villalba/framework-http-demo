@@ -1,12 +1,12 @@
 <?php
-use demo\functional\App;
+use demo\functional\DemoApp;
 ?>
 <head>
 	<meta charset="utf-8">
-	<base href="<?= App::urlbase(); ?>">
+	<base href="<?= DemoApp::urlbase(); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?= App::siteTitle() ?></title>
+	<title><?= DemoApp::siteTitle() ?></title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	

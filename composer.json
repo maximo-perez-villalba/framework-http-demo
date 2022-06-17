@@ -9,7 +9,7 @@
 			"email": "maximo.villalba@gmail.com"
 		}
 	],
-	"version": "0.5.1",
+	"version": "0.5.2",
 	"minimum-stability": "stable",
 	"autoload": {
 		"psr-4": {

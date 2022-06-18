@@ -1,5 +1,7 @@
 <?php 
 use demo\functional\DemoApp;
+use framework\environment\Env;
+Env::console( DemoApp::menuItemsViewsBlocks() );
 ?>
 <div class="list-group">
 <?php foreach ( DemoApp::menuItems() as $id => $item ) : $activeItem = ( "/$id" == DemoApp::urnCurrent() ) ? 'active' : '' ?>

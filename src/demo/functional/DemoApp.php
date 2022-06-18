@@ -1,6 +1,7 @@
 <?php
 namespace demo\functional;
 
+use framework\environment\Env;
 use framework\http\controller\request\HTTPRequestsRoutes;
 
 class DemoApp extends App
@@ -76,6 +77,26 @@ class DemoApp extends App
     static public function urnCurrent(): string
     {
         return ( HTTPRequestsRoutes::currentURN() == '/' ) ? '/home': HTTPRequestsRoutes::currentURN();
+    }
+    
+    /**
+     * 
+     * @return array
+     */
+    static public function menuItemsViewsBlocks(): array
+    {
+        $items = [];
+        /*
+        $iterator = new DirectoryIterator( Env::path( '/src/demo/views/' ) );
+        foreach ( $iterator as $fileinfo ) 
+        {
+            if (!$fileinfo->isDot())
+            {
+                $items[] = $entry->getFilename();
+            }
+        }
+        */
+        return $items;
     }
 }
 

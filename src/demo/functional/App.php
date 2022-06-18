@@ -2,6 +2,7 @@
 namespace demo\functional;
 
 use framework\environment\Env;
+use framework\http\controller\request\HTTPRequestsRoutes;
 
 abstract class App
 {
@@ -41,6 +42,6 @@ abstract class App
      */
     static public function urnCurrent(): string
     {
-        return ( isset( $_GET[ 'urn' ] ) && !empty( $_GET[ 'urn' ] ) ) ? $_GET[ 'urn' ] : 'home';
+        return HTTPRequestsRoutes::currentURN();
     }
 }

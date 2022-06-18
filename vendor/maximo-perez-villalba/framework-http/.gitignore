@@ -2,5 +2,4 @@
 /.buildpath
 /.project
 /composer.lock
-/demo/app-config.php
-/vendor/
+/app-config.php

@@ -4,3 +4,4 @@
 /composer.lock
 /app-config.php
 /errors.log
+/vendor/

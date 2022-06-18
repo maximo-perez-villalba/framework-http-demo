@@ -1,6 +1,8 @@
 <?php
 namespace demo\functional;
 
+use framework\http\controller\request\HTTPRequestsRoutes;
+
 class DemoApp extends App
 {
     
@@ -55,7 +57,7 @@ class DemoApp extends App
     static public function menuItemSelected(): array
     {
         $menuItems = DemoApp::menuItems();
-        return $menuItems[ DemoApp::urnCurrent() ];
+        return $menuItems[ substr( DemoApp::urnCurrent(), 1 ) ];
     }
     
     /**
@@ -67,5 +69,13 @@ class DemoApp extends App
         return "Framework HTTP > Demo";
     }
     
+    /**
+     *
+     * @return string
+     */
+    static public function urnCurrent(): string
+    {
+        return ( HTTPRequestsRoutes::currentURN() == '/' ) ? '/home': HTTPRequestsRoutes::currentURN();
+    }
 }
 

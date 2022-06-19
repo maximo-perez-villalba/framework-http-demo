@@ -23,7 +23,7 @@ class FileResponse extends HTTPResponse
     public function titlePage(): string
     {
         $item = DemoApp::menuItemSelected();
-        return $item[ 'label' ];
+        return $item->label();
     }
     
     /**
@@ -33,7 +33,7 @@ class FileResponse extends HTTPResponse
     public function pathFileSource(): string
     {
         $item = DemoApp::menuItemSelected();
-        return Env::path( $item[ 'file' ] );
+        return Env::path( $item->sourcePath() );
     }
     
 }

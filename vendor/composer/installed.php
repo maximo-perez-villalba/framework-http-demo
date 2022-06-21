@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'maximo-perez-villalba/framework-http-demo',
-        'pretty_version' => '0.5.4',
-        'version' => '0.5.4.0',
+        'pretty_version' => '0.5.5',
+        'version' => '0.5.5.0',
         'reference' => NULL,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
@@ -20,17 +20,17 @@
             'dev_requirement' => false,
         ),
         'maximo-perez-villalba/framework-http' => array(
-            'pretty_version' => '2.1.0',
-            'version' => '2.1.0.0',
-            'reference' => '0acce81213e3724f602d3dc6634bbc44f94f5868',
+            'pretty_version' => '2.3.0',
+            'version' => '2.3.0.0',
+            'reference' => '8d67a79cdd118e4e74b970fac3dd19cd1ae1bff2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../maximo-perez-villalba/framework-http',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'maximo-perez-villalba/framework-http-demo' => array(
-            'pretty_version' => '0.5.4',
-            'version' => '0.5.4.0',
+            'pretty_version' => '0.5.5',
+            'version' => '0.5.5.0',
             'reference' => NULL,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',

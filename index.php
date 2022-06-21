@@ -2,14 +2,15 @@
 include_once( 'vendor/autoload.php' );
 
 use demo\functional\App;
+use demo\functional\DemoApp;
 use framework\environment\Env;
 use framework\http\controller\request\HTTPRequestsRoutes;
 
 Env::init( '/app-config.php' );
 HTTPRequestsRoutes::load( '/routes-config.php' );
 HTTPRequestsRoutes::start();
-
-include_once( App::pathView( '/custom-functions.php' ) );
+DemoApp::start();
+HTTPRequestsRoutes::currentHTTPRequest()->response()->execute();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +24,7 @@ include_once( App::pathView( '/custom-functions.php' ) );
     <br>
 	<br>
     <br>
-	<?php include_once ( App::pathView( HTTPRequestsRoutes::currentHTTPRequest()->response()->pathTemplate() ) ); ?>
+	<?php include_once ( DemoApp::itemMenuSelected()->path() ); ?>
     <br>
     <br>
  	<div class="container-fluid">

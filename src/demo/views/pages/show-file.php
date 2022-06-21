@@ -1,10 +1,12 @@
 <?php
+use demo\controllers\requests\ShowFileRequest;
 use demo\functional\DemoApp;
 use framework\http\controller\request\HTTPRequestsRoutes;
+use framework\environment\Env;
 
 /**
  * 
- * @var \demo\controllers\responses\FileResponse $response
+ * @var demo\controllers\requests\ShowFileRequest $response
  */
 $response = HTTPRequestsRoutes::currentHTTPRequest()->response();
 ?>

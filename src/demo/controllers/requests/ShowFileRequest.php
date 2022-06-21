@@ -1,15 +1,15 @@
 <?php
 namespace demo\controllers\requests;
 
-use demo\controllers\responses\FileResponse;
+use demo\controllers\responses\ShowFileResponse;
 use framework\http\controller\request\HTTPRequest;
 
-class FileRequest extends HTTPRequest
+class ShowFileRequest extends HTTPRequest
 {
     
     public function __construct()
     {
-        $this->response = new FileResponse();
+        $this->response = new ShowFileResponse();
     }
 
     public function execute()

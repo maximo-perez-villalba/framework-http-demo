@@ -45,24 +45,24 @@
         },
         {
             "name": "maximo-perez-villalba/framework-http",
-            "version": "2.1.0",
-            "version_normalized": "2.1.0.0",
+            "version": "2.3.0",
+            "version_normalized": "2.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maximo-perez-villalba/framework-http.git",
-                "reference": "0acce81213e3724f602d3dc6634bbc44f94f5868"
+                "reference": "8d67a79cdd118e4e74b970fac3dd19cd1ae1bff2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maximo-perez-villalba/framework-http/zipball/0acce81213e3724f602d3dc6634bbc44f94f5868",
-                "reference": "0acce81213e3724f602d3dc6634bbc44f94f5868",
+                "url": "https://api.github.com/repos/maximo-perez-villalba/framework-http/zipball/8d67a79cdd118e4e74b970fac3dd19cd1ae1bff2",
+                "reference": "8d67a79cdd118e4e74b970fac3dd19cd1ae1bff2",
                 "shasum": ""
             },
             "require": {
                 "maximo-perez-villalba/framework-environment": ">=1",
                 "php": ">=7.4"
             },
-            "time": "2022-06-18T03:59:10+00:00",
+            "time": "2022-06-21T01:55:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -83,7 +83,7 @@
             "description": "El componente implementa una simple arquitectura HTTP en PHP con fines pedagógicos.",
             "support": {
                 "issues": "https://github.com/maximo-perez-villalba/framework-http/issues",
-                "source": "https://github.com/maximo-perez-villalba/framework-http/tree/v2.1.0"
+                "source": "https://github.com/maximo-perez-villalba/framework-http/tree/v2.3.0"
             },
             "install-path": "../maximo-perez-villalba/framework-http"
         }

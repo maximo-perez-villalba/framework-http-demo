@@ -1,5 +1,5 @@
 <?php
-namespace demo\ui\components\listables\lists;
+namespace demo\ui\components\listables\lists\groups;
 
 use demo\functional\DemoApp;
 use demo\ui\components\ComponentHtml;

@@ -1,58 +1,60 @@
 <?php 
 use demo\functional\DemoApp;
-use demo\ui\components\listables\lists\ListGroupComponent;
-use framework\http\controller\request\HTTPRequestsRoutes;
+use demo\ui\components\listables\lists\groups\ListGroupComponent;
+use framework\environment\Env;
 
-$response = HTTPRequestsRoutes::currentHTTPRequest()->response();
-
-$listHomeComponent = new ListGroupComponent( 'HomeAction' );
-$listHomeComponent->itemSelected( DemoApp::urnCurrent() );
-$listHomeComponent->addItem( DemoApp::home()->label(), DemoApp::home()->url() );
-
-$listRequestComponent = new ListGroupComponent( 'RequestsAction' );
-$listRequestComponent->itemSelected( DemoApp::urnCurrent() );
-foreach ( DemoApp::itemsRequests() as $itemMenu )
+/**
+ * @param string $defaultURN
+ * @param array $menu
+ * @return ListGroupComponent
+ */
+function listComponent( string $defaultURN, array $menu ): ListGroupComponent
 {
-    $listRequestComponent->addItem( $itemMenu->label(), $itemMenu->url() );
+    $listComponent = new ListGroupComponent( $defaultURN );
+    foreach ( $menu as $itemMenu )
+    {
+        $active = ( DemoApp::urnCurrent() == $itemMenu->id() );
+        $listComponent->addItem( $itemMenu->label(), $itemMenu->url(), $active, $itemMenu->id() );
+    }
+    return $listComponent;
 }
 
-$listResponsesComponent = new ListGroupComponent( 'ResponsesAction' );
-$listResponsesComponent->itemSelected( DemoApp::urnCurrent() );
-foreach ( DemoApp::itemsResponses() as $itemMenu )
+/**
+ * 
+ * @param ListGroupComponent $list
+ * @param string $title
+ * @param string $appState
+ * @return string
+ */
+function toHtmlSubmenu( ListGroupComponent $list, string $title, string $appState ): string
 {
-    $listResponsesComponent->addItem( $itemMenu->label(), $itemMenu->url() );
+    $code = '';
+    if( DemoApp::subMenuSelected() == $appState )
+    {
+        $code .= "<h6>{$title}</h6><hr>";
+        $code .= $list->toHtml();
+        $code .= "<br>";
+    }
+    else
+    {
+        $url = Env::url( $list->id() );
+        $code .= "<a href=\"{$url}\"><h6>{$title}</h6></a>";
+        $code .= "<hr>";
+    }
+    return $code;
 }
 
-$listStructuresComponent = new ListGroupComponent( 'StructuresAction' );
-$listStructuresComponent->itemSelected( DemoApp::urnCurrent() );
-foreach ( DemoApp::itemsStructure() as $itemMenu )
-{
-    $listStructuresComponent->addItem( $itemMenu->label(), $itemMenu->url() );
-}
+$listRequestComponent = listComponent( 'ShowFileRequest', DemoApp::itemsRequests() ); 
+$listResponsesComponent = listComponent( 'HomeResponse', DemoApp::itemsResponses() );
+$listStructuresComponent = listComponent( 'index', DemoApp::itemsStructure() );
+$listViewBlocksComponent = listComponent( 'html-head', DemoApp::itemsViewsBlocks() );
+$listViewPagesComponent = listComponent( 'show-file', DemoApp::itemsViewsPages() );
 
-$listViewBlocksComponent = new ListGroupComponent( 'ViewBlocksAction' );
-$listViewBlocksComponent->itemSelected( DemoApp::urnCurrent() );
-foreach ( DemoApp::itemsViewsBlocks() as $itemMenu )
-{
-    $listViewBlocksComponent->addItem( $itemMenu->label(), $itemMenu->url() );
-}
 
-$listViewPagesComponent = new ListGroupComponent( 'ViewPagesAction' );
-$listViewPagesComponent->itemSelected( DemoApp::urnCurrent() );
-foreach ( DemoApp::itemsViewsPages() as $itemMenu )
-{
-    $listViewPagesComponent->addItem( $itemMenu->label(), $itemMenu->url() );
-}
-
-//print $listHomeComponent->toHtml();
-print '<br><h4>Requests</h4>';
-print $listRequestComponent->toHtml();
-print '<br><h4>Responses</h4>';
-print $listResponsesComponent->toHtml();
-print '<br><h4>Project structure</h4>';
-print $listStructuresComponent->toHtml();
-print '<br><h4>Views/Blocks</h4>';
-print $listViewBlocksComponent->toHtml();
-print '<br><h4>Views/Pages</h4>';
-print $listViewPagesComponent->toHtml();
+/* Print navigation menu */
+print toHtmlSubmenu( $listRequestComponent, 'Requests', DemoApp::DEMO_APP_STATE_REQUESTS );
+print toHtmlSubmenu( $listResponsesComponent, 'Responses', DemoApp::DEMO_APP_STATE_RESPONSES );
+print toHtmlSubmenu( $listViewBlocksComponent, 'Views/Blocks', DemoApp::DEMO_APP_STATE_VIEW_BLOCKS );
+print toHtmlSubmenu( $listViewPagesComponent, 'Views/Pages', DemoApp::DEMO_APP_STATE_VIEW_PAGES );
+print toHtmlSubmenu( $listStructuresComponent, 'Project structure', DemoApp::DEMO_APP_STATE_STRUCTURE );
 ?>

@@ -10,6 +10,42 @@ class DemoApp extends App
 {
     
     /**
+     * 
+     * @var string
+     */
+    const DEMO_APP_STATE_HOME = 'home';
+    
+    /**
+     *
+     * @var string
+     */
+    const DEMO_APP_STATE_REQUESTS = 'requests';
+    
+    /**
+     *
+     * @var string
+     */
+    const DEMO_APP_STATE_RESPONSES = 'responses';
+    
+    /**
+     *
+     * @var string
+     */
+    const DEMO_APP_STATE_STRUCTURE = 'structure';
+    
+    /**
+     *
+     * @var string
+     */
+    const DEMO_APP_STATE_VIEW_BLOCKS = 'view-blocks';
+    
+    /**
+     *
+     * @var string
+     */
+    const DEMO_APP_STATE_VIEW_PAGES = 'view-pages';
+    
+    /**
      * @var array
      */
     static private array $itemsStructure = [];
@@ -46,17 +82,32 @@ class DemoApp extends App
     
     /**
      * 
+     * @var string
+     */
+    static private ?string $subMenuSelected = NULL;
+    
+    /**
+     * 
      */
     static public function start()
     {
+        self::dataSetting();
+        self::stateSetting();
+    }
+
+    /**
+     * 
+     */
+    static private function dataSetting()
+    {
         self::$home = new ItemMenu
         (
-            'welcome', 
+            'welcome',
             Env::url( 'welcome' ),
             App::pathView( 'pages/home.php' ),
             'Inicio'
-        );
-
+            );
+        
         self::$itemsRequests = self::itemsMenuFromDirectory( '/src/demo/controllers/requests' );
         self::$itemsResponses = self::itemsMenuFromDirectory( '/src/demo/controllers/responses' );
         self::$itemsViewsBlocks = self::itemsMenuFromDirectory( '/src/demo/views/blocks' );
@@ -67,32 +118,44 @@ class DemoApp extends App
         self::$itemsStructure[ 'routes-config' ] = self::itemMenuFromFile( 'routes-config', 'routes-config.php', '/routes-config.php' );
         self::$itemsStructure[ 'composer' ] = self::itemMenuFromFile( 'composer', 'composer.json', '/composer.json' );
         self::$itemsStructure[ 'htaccess' ] = self::itemMenuFromFile( 'htaccess', '.htaccess', '/.htaccess' );
-        
+    }
+    
+    /**
+     * 
+     */
+    static private function stateSetting()
+    {
         $itemSelectedKey = substr( DemoApp::urnCurrent(), 1 );
         
         if ( $itemSelectedKey == 'welcome' )
         {
             self::$itemMenuSelected = self::$home;
+            self::$subMenuSelected = DemoApp::DEMO_APP_STATE_HOME;
         }
         elseif( isset( self::$itemsStructure[ $itemSelectedKey ] ) )
         {
             self::$itemMenuSelected = self::$itemsStructure[ $itemSelectedKey ];
+            self::$subMenuSelected = DemoApp::DEMO_APP_STATE_STRUCTURE;
         }
         elseif( isset( self::$itemsRequests[ $itemSelectedKey ] ) )
         {
             self::$itemMenuSelected = self::$itemsRequests[ $itemSelectedKey ];
+            self::$subMenuSelected = DemoApp::DEMO_APP_STATE_REQUESTS;
         }
         elseif( isset( self::$itemsResponses[ $itemSelectedKey ] ) )
         {
             self::$itemMenuSelected = self::$itemsResponses[ $itemSelectedKey ];
+            self::$subMenuSelected = DemoApp::DEMO_APP_STATE_RESPONSES;
         }
         elseif( isset( self::$itemsViewsBlocks[ $itemSelectedKey ] ) )
         {
             self::$itemMenuSelected = self::$itemsViewsBlocks[ $itemSelectedKey ];
+            self::$subMenuSelected = DemoApp::DEMO_APP_STATE_VIEW_BLOCKS;
         }
         elseif( isset( self::$itemsViewsPages[ $itemSelectedKey ] ) )
         {
             self::$itemMenuSelected = self::$itemsViewsPages[ $itemSelectedKey ];
+            self::$subMenuSelected = DemoApp::DEMO_APP_STATE_VIEW_PAGES;
         }
     }
 
@@ -103,6 +166,15 @@ class DemoApp extends App
     static public function itemMenuSelected(): ?ItemMenu
     {
         return self::$itemMenuSelected;
+    }
+
+    /**
+     * 
+     * @return string
+     */
+    static public function subMenuSelected(): ?string
+    {
+        return self::$subMenuSelected;
     }
     
     /**

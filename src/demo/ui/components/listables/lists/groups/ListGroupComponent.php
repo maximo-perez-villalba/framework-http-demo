@@ -1,8 +1,7 @@
 <?php
-namespace demo\ui\components\listables\lists;
+namespace demo\ui\components\listables\lists\groups;
 
 use demo\ui\components\listables\ListableComponent;
-use demo\ui\components\listables\accordions\ItemAccordion;
 
 class ListGroupComponent extends ListableComponent
 {
@@ -20,6 +19,7 @@ class ListGroupComponent extends ListableComponent
         {
             $id = md5( uniqid( $label.$url, TRUE ) );
         }
+        
         $this->list[ $id ] = new ItemListGroup( $id, $label, $url, $active );
     }
 

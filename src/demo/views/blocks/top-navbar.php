@@ -1,5 +1,6 @@
 <?php
 use demo\functional\DemoApp;
+use framework\environment\Env;
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 	<div class="container-fluid">
